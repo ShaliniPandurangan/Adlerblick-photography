@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adlerblick Photography · Shangarapillai</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts: classic serif (Cormorant Garamond) + clean sans (Montserrat) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #fcfaf7;   /* soft white / warm beige */
+      color: #2e2e2e;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: #3f3f3f;
+    }
+
+    h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 70px;
+      height: 2px;
+      background-color: #c2a477;  /* muted gold/sage accent */
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 30px;
+    }
+
+    /* header */
+    header {
+      background-color: #ffffffd9;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.03);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(194, 164, 119, 0.2);
+    }
+
+    .header-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #3b2e1f;
+      line-height: 1.2;
+    }
+    .logo span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 300;
+      letter-spacing: 3px;
+      color: #a28b6f;
+      display: block;
+      margin-top: 2px;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    nav a {
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 1rem;
+      color: #3f3f3f;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+      padding-bottom: 5px;
+      border-bottom: 1px solid transparent;
+    }
+    nav a:hover {
+      color: #c2a477;
+      border-bottom-color: #c2a477;
+    }
+
+    /* hero */
+    .hero {
+      position: relative;
+      height: 90vh;
+      min-height: 680px;
+      overflow: hidden;
+    }
+
+    .slideshow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center 30%;
+      opacity: 0;
+      animation: fade 24s infinite;
+    }
+	
+	/* https://images.pexels.com/photos/6849256/pexels-photo-6849256.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2 */
+	
+    /* CHILD-FOCUSED IMAGES – baby & children photography only */
+    .slide1 { background-image: linear-gradient(0deg, rgba(30,30,20,0.1), rgba(0,0,0,0.1)),     url('https://images.pexels.com/photos/1442005/pexels-photo-1442005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); animation-delay: 0s; }      /* happy child */
+    .slide2 { background-image: linear-gradient(0deg, rgba(30,30,20,0.1), rgba(0,0,0,0.1)), url('https://images.pexels.com/photos/11952722/pexels-photo-11952722.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); animation-delay: 6s; }  /* little girl portrait */
+    .slide3 { background-image: linear-gradient(0deg, rgba(30,30,20,0.1), rgba(0,0,0,0.1)), url('https://images.pexels.com/photos/235126/pexels-photo-235126.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); animation-delay: 12s; } /* sleeping baby */
+    .slide4 { background-image: linear-gradient(0deg, rgba(30,30,20,0.1), rgba(0,0,0,0.1)), url('https://images.pexels.com/photos/3845199/pexels-photo-3845199.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); animation-delay: 18s; } /* baby smile */
+
+    @keyframes fade {
+      0% { opacity: 0; }
+      6% { opacity: 1; }
+      25% { opacity: 1; }
+      31% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      text-align: center;
+      color: white;
+      background: rgba(0,0,0,0.15);
+      backdrop-filter: brightness(0.95);
+    }
+
+    .hero-content h2 {
+      font-size: 4.2rem;
+      color: white;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .hero-content h2:after { display: none; }
+
+    .hero-content p {
+      font-size: 1.6rem;
+      font-family: 'Cormorant Garamond', serif;
+      margin-bottom: 2rem;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    .btn {
+      background-color: #c2a477;
+      color: white;
+      border: none;
+      padding: 16px 42px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 8px 18px rgba(194, 164, 119, 0.3);
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover {
+      background-color: #b59260;
+      transform: translateY(-3px);
+      box-shadow: 0 14px 24px rgba(160, 130, 80, 0.3);
+    }
+
+    /* portfolio gallery */
+    .section {
+      padding: 90px 0;
+    }
+
+    .section-bg {
+      background-color: #f9f6f2;
+    }
+
+    .filter-nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      background: none;
+      border: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #6b6b6b;
+      cursor: pointer;
+      padding: 8px 0;
+      border-bottom: 2px solid transparent;
+      transition: 0.2s;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      color: #c2a477;
+      border-bottom-color: #c2a477;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+      aspect-ratio: 4 / 5;
+      cursor: pointer;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(44, 40, 34, 0.7));
+      color: white;
+      padding: 20px 15px 12px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .gallery-item:hover .gallery-caption {
+      opacity: 1;
+    }
+
+    /* lightbox simple */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 85%;
+      border-radius: 6px;
+      box-shadow: 0 20px 30px #00000055;
+    }
+    .close-lightbox {
+      position: absolute;
+      top: 30px; right: 50px;
+      color: white;
+      font-size: 3rem;
+      cursor: pointer;
+    }
+
+    /* about */
+    .about-flex {
+      display: flex;
+      gap: 60px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .about-img {
+      flex: 1 1 280px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 20px 30px -10px rgba(90, 70, 50, 0.15);
+    }
+    .about-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .about-text {
+      flex: 2 1 380px;
+    }
+    .about-text h3 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .about-text .since {
+      font-family: 'Cormorant Garamond', serif;
+      color: #a28b6f;
+      font-size: 1.3rem;
+      border-bottom: 1px dashed #d4c2a8;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    /* services & pricing */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .service-card {
+      background: white;
+      padding: 40px 25px 35px;
+      text-align: center;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.02);
+      border-radius: 24px;
+      border: 1px solid #f3ede5;
+      transition: all 0.2s;
+    }
+    .service-card:hover {
+      border-color: #dacbb8;
+      box-shadow: 0 25px 30px -15px #cfc0ab70;
+    }
+    .service-card i {
+      font-size: 3rem;
+      color: #c2a477;
+      margin-bottom: 25px;
+    }
+    .service-card h3 {
+      font-size: 1.9rem;
+      margin-bottom: 12px;
+    }
+    .service-card .price-hint {
+      font-size: 1.1rem;
+      color: #a28b6f;
+      font-weight: 500;
+      margin: 20px 0 10px;
+    }
+    .service-card .btn-small {
+      background: none;
+      border: 1px solid #c2a477;
+      color: #c2a477;
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: 0.2s;
+      display: inline-block;
+    }
+    .service-card .btn-small:hover {
+      background: #c2a477;
+      color: white;
+    }
+
+    /* testimonials */
+    .testimonial-slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 30px;
+      padding: 20px 5px 40px;
+      scrollbar-width: thin;
+      scrollbar-color: #c2a477 #f0e4d8;
+    }
+    .testimonial {
+      flex: 0 0 400px;
+      scroll-snap-align: start;
+      background: white;
+      padding: 35px 30px;
+      border-radius: 30px;
+      box-shadow: 0 6px 18px #f0e4d8;
+      font-style: italic;
+    }
+    .testimonial i {
+      color: #c2a477;
+      font-size: 2rem;
+      opacity: 0.5;
+      margin-bottom: 15px;
+    }
+    .client-name {
+      margin-top: 25px;
+      font-weight: 500;
+      color: #4d3e2e;
+    }
+
+    /* contact & map */
+    .contact-flex {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .contact-info {
+      flex: 1 1 280px;
+    }
+    .contact-info p {
+      margin: 20px 0;
+      font-size: 1.1rem;
+    }
+    .contact-info i {
+      color: #c2a477;
+      width: 35px;
+    }
+    .map-form {
+      flex: 2 1 400px;
+    }
+    .map-form iframe {
+      width: 100%;
+      height: 280px;
+      border: 0;
+      border-radius: 16px;
+    }
+    .contact-form {
+      display: grid;
+      gap: 15px;
+      margin-top: 25px;
+    }
+    .contact-form input, .contact-form textarea {
+      padding: 15px 20px;
+      border: 1px solid #ddd9d2;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      background: white;
+    }
+    .contact-form textarea {
+      border-radius: 30px;
+      resize: vertical;
+    }
+    .contact-form button {
+      width: fit-content;
+      padding: 14px 50px;
+    }
+
+    /* footer */
+    footer {
+      background: #e7dfd5;
+      padding: 30px 0;
+      text-align: center;
+      color: #3d352b;
+      font-size: 0.95rem;
+    }
+    .social-links {
+      margin: 18px 0 10px;
+    }
+    .social-links a {
+      color: #5b4d3c;
+      font-size: 1.8rem;
+      margin: 0 14px;
+      transition: color 0.2s;
+    }
+    .social-links a:hover {
+      color: #c2a477;
+    }
+
+    /* utility */
+    .text-center { text-align: center; }
+    .mb-2 { margin-bottom: 2rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-flex">
+      <div class="logo">
+        <h1>Adlerblick Photography</h1>
+        <span>Shangarapillai · Memories Through a Unique Lens</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero with slideshow - CHILD PHOTOGRAPHY ONLY -->
+  <section class="hero">
+    <div class="slideshow">
+      <div class="slide slide1"></div>
+      <div class="slide slide2"></div>
+      <div class="slide slide3"></div>
+      <div class="slide slide4"></div>
+    </div>
+    <div class="hero-content">
+      <h2>Adlerblick Photography</h2>
+      <p>authentic · airy · heartwarming</p>
+      <a href="#contact" class="btn">BOOK A SESSION</a>
+    </div>
+  </section>
+
+  <!-- Portfolio Gallery (also updated to child/family focus) -->
+  <section id="portfolio" class="container section">
+    <h2 class="text-center">Portfolio</h2>
+    <div class="filter-nav">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="babies">Babies</button>
+      <button class="filter-btn" data-filter="families">Families</button>
+      <button class="filter-btn" data-filter="albums">Albums</button>
+    </div>
+    <div class="gallery-grid" id="gallery">
+      <!-- all images are baby/child/family oriented -->
+      <div class="gallery-item" data-category="babies"><img src="https://images.pexels.com/photos/1648377/pexels-photo-1648377.jpeg?auto=compress&cs=tinysrgb&w=600" alt="newborn baby"><div class="gallery-caption">Sweet newborn</div></div>
+      <div class="gallery-item" data-category="families"><img src="https://images.pexels.com/photos/3771605/pexels-photo-3771605.jpeg?auto=compress&cs=tinysrgb&w=600" alt="happy child"><div class="gallery-caption">Childhood joy</div></div>
+      <div class="gallery-item" data-category="babies"><img src="https://images.pexels.com/photos/3875219/pexels-photo-3875219.jpeg?auto=compress&cs=tinysrgb&w=600" alt="baby close up"><div class="gallery-caption">Baby details</div></div>
+      <div class="gallery-item" data-category="families"><img src="https://images.pexels.com/photos/3845495/pexels-photo-3845495.jpeg?auto=compress&cs=tinysrgb&w=600" alt="baby smile"><div class="gallery-caption">Pure wonder</div></div>
+      <div class="gallery-item" data-category="albums"><img src="https://images.pexels.com/photos/4454101/pexels-photo-4454101.jpeg?auto=compress&cs=tinysrgb&w=600" alt="custom album"><div class="gallery-caption">Leather album</div></div>
+      <div class="gallery-item" data-category="babies"><img src="https://images.pexels.com/photos/14280314/pexels-photo-14280314.jpeg?auto=compress&cs=tinysrgb&w=600" alt="little girl"><div class="gallery-caption">Little star</div></div>
+    </div>
+  </section>
+
+  <!-- About the photographer -->
+  <section id="about" class="section section-bg">
+    <div class="container about-flex">
+      <div class="about-img">
+        <img src="https://images.pexels.com/photos/2291012/pexels-photo-2291012.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Shangarapillai photographer">
+      </div>
+      <div class="about-text">
+        <h3>Shangarapillai</h3>
+        <div class="since">photographer · since 2018</div>
+        <p>With a gentle heart and an eye for the candid, Shangarapillai captures the fleeting beauty of childhood and family bonds. Based in Rümlang, Zürich, his work is defined by bright, airy tones and authentic emotions — inspired by the innocence of babies and the laughter of families. Every session is a quiet storytelling, creating heirlooms that feel like warm sunlight.</p>
+		<p style="margin-top: 20px;">
+			Founder of <a href="https://instagram.com/kethees_sambu" target="_blank">@kethees_sambu</a> and the dedicated baby portfolio <a href="https://instagram.com/pearlbaby_photography" target="_blank">@pearlbaby_photography</a>, Shangarapillai’s style blends documentary immediacy with a dreamy, fine‑art finish. He believes the best images are the ones where you forget the camera.
+		</p>      
+	  </div>
+    </div>
+  </section>
+
+  <!-- Services & Pricing -->
+  <section id="services" class="container section">
+    <h2 class="text-center">Services & fine art albums</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <i class="fas fa-baby"></i>
+        <h3>Baby & Newborn</h3>
+        <p>Natural, sleepy poses and delicate details. Up to 2 hours.</p>
+        <div class="price-hint">starting at 390 CHF</div>
+        <a href="#contact" class="btn-small">Inquire</a>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-child"></i>
+        <h3>Children & Family</h3>
+        <p>Storytelling sessions at home or outdoors. Candid & connected.</p>
+        <div class="price-hint">starting at 520 CHF</div>
+        <a href="#contact" class="btn-small">Inquire</a>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-images"></i>
+        <h3>Custom Albums</h3>
+        <p>Handcrafted heirloom albums, leather & linen.</p>
+        <div class="price-hint">from 280 CHF</div>
+        <a href="#contact" class="btn-small">Inquire</a>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-camera-retro"></i>
+        <h3>Portrait sessions</h3>
+        <p>Individual portraits, milestones, expectant mothers.</p>
+        <div class="price-hint">starting at 290 CHF</div>
+        <a href="#contact" class="btn-small">Inquire</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section section-bg">
+    <div class="container">
+      <h2 class="text-center">kind words</h2>
+      <div class="testimonial-slider">
+        <div class="testimonial"><i class="fas fa-quote-left"></i> Shangarapillai made us feel so comfortable. The baby photos are dreamy — we cried when we saw the gallery. <div class="client-name">— Elena & Markus</div></div>
+        <div class="testimonial"><i class="fas fa-quote-left"></i> Our family session was pure joy. He has a way with children; the images are so warm and real. <div class="client-name">— Sabine, mother of two</div></div>
+        <div class="testimonial"><i class="fas fa-quote-left"></i> The custom album is a treasure. Quality and artistry beyond expectations. Danke, Shangarapillai! <div class="client-name">— Nathalie, Rümlang</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & map / location -->
+  <section id="contact" class="container section">
+    <h2>Besuchen Sie uns</h2>
+    <div class="contact-flex">
+      <div class="contact-info">
+        <p><i class="fas fa-map-pin"></i> Hörnlistrasse 2, 8153 Rümlang, Zürich</p>
+        <p><i class="fas fa-phone-alt"></i> +41 76 123 45 67</p>
+        <p><i class="fas fa-envelope"></i> hello@adlerblick-photo.ch</p>
+        <p>
+			<i class="fab fa-instagram"></i> 
+			<a href="https://instagram.com/kethees_sambu" target="_blank">@kethees_sambu</a>  ·  
+			<a href="https://instagram.com/pearlbaby_photography" target="_blank">@pearlbaby_photography</a>
+		</p>
+        <p style="margin-top: 30px;"><strong>studio hours by appointment</strong></p>
+      </div>
+      <div class="map-form">
+        <!-- embedded Google Map mock (static iframe) -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2697.281421068985!2d8.536479315585194!3d47.45187197917444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4790753abc0f2e5d%3A0x9c8c0b9f9f1f1f1f!2sH%C3%B6rnlistrasse%202%2C%208153%20R%C3%BCmlang%2C%20Switzerland!5e0!3m2!1sen!2sch!4v1610000000000!5m2!1sen!2sch" allowfullscreen="" loading="lazy"></iframe>
+        <!-- tiny contact form -->
+        <form class="contact-form">
+          <input type="text" placeholder="Your name" required>
+          <input type="email" placeholder="Email address" required>
+          <textarea rows="3" placeholder="Tell me about your session idea..."></textarea>
+          <button type="submit" class="btn" style="padding: 12px 38px;">Send message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="social-links">
+        <a href="https://instagram.com/pearlbaby_photography" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+      </div>
+      <p>© 2025 Adlerblick Photography Shangarapillai · All rights reserved</p>
+      <p style="margin-top: 8px; font-size: 0.8rem;">Hörnlistrasse 2, Rümlang · Photography that feels like home</p>
+    </div>
+  </footer>
+
+  <!-- lightbox container (simple) -->
+  <div id="lightbox" class="lightbox">
+    <span class="close-lightbox">&times;</span>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <script>
+    // simple lightbox
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.querySelector('.close-lightbox');
+
+    galleryItems.forEach(item => {
+      item.addEventListener('click', function() {
+        const imgSrc = this.querySelector('img').src;
+        lightboxImg.src = imgSrc;
+        lightbox.style.display = 'flex';
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.style.display = 'none';
+      }
+    });
+
+    // tiny filter simulation (all visible)
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const filter = this.dataset.filter;
+        document.querySelectorAll('.gallery-item').forEach(item => {
+          if (filter === 'all' || item.dataset.category === filter) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
